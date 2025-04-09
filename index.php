@@ -4,7 +4,7 @@
 
 
     //Verifica se os campos do email e senha foram enviados via POST
-    if (isset($_POST['email']) || isset($_POST['senha'])) {
+    if (isset($_POST['email']) || isset($_POST['senha'])) 
 
         //Verifica se o campo do email está vazio
         if (strlen($_POST['email'] == 0)) {
@@ -37,11 +37,18 @@
                 if(!isset($_SESSION)){
                     session_start();
 
-                    //Armazena informções do usuário na sessão
+                    //Armazena informações do usuário na sessão
                     $_SESSION['id'] = $usuario['id'];
                     $_SESSION['nome'] = $usuario['nome'];
 
+                    //Redirecionar o usuário para a pagina painel.php
+                    header("Location: painel.php");
+
+                    
+
                                 
+            } else {
+                echo "Falha ao logar! E-mail ou senha incorretos";
             }
 
         }
